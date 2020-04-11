@@ -13,6 +13,14 @@ void randomiser(int arr[],int size) {
     cout << "\n";
 }
 
+void randomiser(int arr[],int size) {
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() * 100 / RAND_MAX;
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
+}
+
 void max(int* arr, int* arr1, int size, int size1) {
     int max = *arr;
     int max1 = *arr1;
