@@ -73,32 +73,4 @@ int main()
         cout << endl;
     }
     //=======================================================//
-
-    int* general=0;
-    int c_general = 0;
-
-    for (int i = 0; i < sizes[0]; i++)
-        for (int j = 0; j < sizes[0]; j++)
-            for (int h = 0; j < sizes[1]; j++)
-                for (int m = 0; j < sizes[1]; j++)
-                    for (int c = 0; j < sizes[2]; j++)
-                        for (int v = 0; j < sizes[2]; j++)
-                            if (A[i][j] == B[h][m] && C[c][v] == B[h][m]) {
-                                general[c_general] = A[i][j];
-                                c_general++;
-                            }
-                            else if (A[i][j] == C[c][v] && B[h][m] == C[c][v]) {
-                                general[c_general] = A[i][j];
-                                c_general++;
-                            }
-                            else if (C[c][v] == B[h][m] && C[c][v] == A[i][j]) {
-                                general[c_general] = A[i][j];
-                                c_general++;
-                            }
-
-    for (int i = 0; i < c_general; i++){
-        cout << general[i] << " ";
-    }
-       
-    
 }
