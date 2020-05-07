@@ -2,22 +2,22 @@
 #include <locale>
 #include <cmath>
 #include <conio.h>
-#pragma warning(disable : 4996)
+#include <string>
 
 using namespace std;
 
 typedef struct MyAutopark {
-	char name[255];
+	string name;
 	double Long;
 	int klirens;
 	double liters;
 	double diametr;
 	double dvizhok;
-	char color[50];
-	char* korobka;
+	string color;
+	string korobka;
 } avito;
 
-MyAutopark *database;
+MyAutopark* database;
 
 double clong() {
 	double Clong;
@@ -54,48 +54,47 @@ double dvizh() {
 	return mosh;
 }
 
-char* col() {
-	char* cvet=0;
+string col() {
+	string cvet;
 	cout << "Введите цвет своей машины ";
 	cin >> cvet;
 	return cvet;
 }
 
 int cbox() {
-	int peredachi = _getch();
-tryagain:
+	int peredachi = 0;
+
 	cout << "Какой тип коробки передач у вас ?\n"
 		<< "1.Автомат\n"
 		<< "2.Механика\n";
-	cin >> peredachi;
-	if (peredachi == '1')
-		return 1;
-	else if (peredachi == '2')
-		return 2;
-	else {
-		system("cls");
-		goto tryagain;
+
+	while (peredachi != 1 || peredachi != 2) {
+		cin >> peredachi;
+		if (peredachi == 1)
+			return 1;
+		else if (peredachi == 2)
+			return 2;
 	}
 }
 
-char* model() {
-	char* name1 = {};
+string model() {
+	string name1 = {};
 	cout << "Введите имя вашего авто ";
 	cin >> name1;
 	return name1;
 }
 
 void show(int size) {
-	for (int i=0; i < size; i++) {
-		cout << i << '.\n';
-		cout << "Имя" << database[i].name << endl;
+	for (int i = 0; i < size; i++) {
+		cout <<"Машина номер "<< i+1 << ".\n";
+		cout << "Имя: " << database[i].name << endl;
 		cout << "Длинна=" << database[i].Long << endl;
 		cout << "Клиренс=" << database[i].klirens << endl;
 		cout << "Объём бака=" << database[i].liters << endl;
 		cout << "Диаметр колёс=" << database[i].diametr << endl;
-		cout << "Мощность двигателя=" << database[i].dvizhok << " Лошадиных сил" << endl;
+		cout << "Мощность двигателя=" << database[i].dvizhok << " Лошадиных(-ая) сил(-а)" << endl;
 		cout << "Цвет=" << database[i].color << endl;
-		cout << "Тип коробки передач=" << database[i].korobka;
+		cout << "Тип коробки передач=" << database[i].korobka<<endl<<endl;
 	}
 }
 
@@ -103,8 +102,6 @@ int main() {
 	setlocale(LC_ALL, "rus");
 
 	int size;
-	char* name = {};
-	char* color = {};
 	const char* mach = "Механика";
 	const char* automatik = "Автомат";
 	int box;
@@ -118,23 +115,23 @@ int main() {
 	cout << "Пришло время заполнить его:\n";
 
 	for (int i = 0; i < size; i++) {
-		cout << "Машина номер " << i+1 << endl;
-		name = model();
-		strcpy(database[i].name, name);
+		cout << "Машина номер " << i + 1 << endl;
+
+		database[i].name= model();
 		database[i].Long = clong();
 		database[i].klirens = klirenc();
-		database[i].liters= lit();
+		database[i].liters = lit();
 		database[i].diametr = wheel();
 		database[i].dvizhok = dvizh();
-		color = col();
-		strcpy(database[i].color, color);
+		database[i].color = col();
 		box = cbox();
 		if (box == 1)
-			strcpy(database[i].korobka, automatik);
+			database[i].korobka=automatik;
 		else if (box == 2)
-			strcpy(database[i].korobka, mach);
+			database[i].korobka= mach;
 
 		system("cls");
 	}
 	show(size);
+	delete[] database;
 }
