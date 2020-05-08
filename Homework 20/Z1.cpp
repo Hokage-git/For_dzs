@@ -13,7 +13,7 @@ struct Student {
 Student* database;
 Student tempbase;
 
-void input_assessment(int size, int count) {
+void input_assessment(int size,int count) {
 	for (int i = 0; i < 5; i++) {
 		cin >> database[count].assessment[i];
 	}
@@ -31,10 +31,10 @@ void show_high(int size) {
 		}
 
 		if (check[4] >= 4) {
-			cout << "Èìÿ: " << database[i].name << endl
-				<< "Ôàìèëèÿ: " << database[i].soname << endl
-				<< "Ãğóïïà: " << database[i].group << endl;
-			cout << "Îöåíêè: ";
+			cout << "Ğ˜Ğ¼Ñ: " << database[i].name << endl
+				<< "Ğ¤Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ: " << database[i].soname << endl
+				<< "Ğ“Ñ€ÑƒĞ¿Ğ¿Ğ°: " << database[i].group << endl;
+			cout << "ĞÑ†ĞµĞ½ĞºĞ¸: ";
 			for (int h = 0; h < 5; h++) {
 				cout << database[i].assessment[h] << " ";
 			}
@@ -57,11 +57,11 @@ void show_low(int size) {
 
 		}
 
-		if ((check[2] + check[1]) >= 3) {
-			cout << "Èìÿ: " << database[i].name << endl
-				<< "Ôàìèëèÿ: " << database[i].soname << endl
-				<< "Ãğóïïà: " << database[i].group << endl;
-			cout << "Îöåíêè: ";
+		if ((check[2]+check[1]) >= 3) {
+			cout << "Ğ˜Ğ¼Ñ: " << database[i].name << endl
+				<< "Ğ¤Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ: " << database[i].soname << endl
+				<< "Ğ“Ñ€ÑƒĞ¿Ğ¿Ğ°: " << database[i].group << endl;
+			cout << "ĞÑ†ĞµĞ½ĞºĞ¸: ";
 			for (int h = 0; h < 5; h++) {
 				cout << database[i].assessment[h] << " ";
 			}
@@ -75,10 +75,10 @@ void show_low(int size) {
 
 void show(int size) {
 	for (int i = 0; i < size; i++) {
-		cout << "Èìÿ: " << database[i].name << endl
-			<< "Ôàìèëèÿ: " << database[i].soname << endl
-			<< "Ãğóïïà: " << database[i].group << endl;
-		cout << "Îöåíêè: ";
+		cout << "Ğ˜Ğ¼Ñ: " << database[i].name << endl
+			<< "Ğ¤Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ: " << database[i].soname << endl
+			<< "Ğ“Ñ€ÑƒĞ¿Ğ¿Ğ°: " << database[i].group << endl;
+		cout << "ĞÑ†ĞµĞ½ĞºĞ¸: ";
 		for (int h = 0; h < 5; h++) {
 			cout << database[i].assessment[h] << " ";
 		}
@@ -92,28 +92,28 @@ int main() {
 	bool exit = true;
 	int size;
 	int choose;
-	cout << "Ââåäèòå êîëè÷åñòâî ó÷åíèêîâ â âàøåé ãğóïïå: ";
+	cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑƒÑ‡ĞµĞ½Ğ¸ĞºĞ¾Ğ² Ğ² Ğ²Ğ°ÑˆĞµĞ¹ Ğ³Ñ€ÑƒĞ¿Ğ¿Ğµ: ";
 	cin >> size;
 
 	database = new Student[size];
 
 	for (int i = 0; i < size; i++) {
 
-		cout << "Ââåäèòå èìÿ è ôàìèëèş ñòóäåíòà ÷åğåç ïğîáåë: ";
+		cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ Ğ¸ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ ÑÑ‚ÑƒĞ´ĞµĞ½Ñ‚Ğ° Ñ‡ĞµÑ€ĞµĞ· Ğ¿Ñ€Ğ¾Ğ±ĞµĞ»: ";
 		cin >> database[i].name >> database[i].soname;
 
-		cout << "Ââåäèòå íîìåğ íàçâàíèå ãğóïïû(ïğèìåğ:Ôèçìàò): ";
-		cin >> database[i].group;
+		cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ¾Ğ¼ĞµÑ€ Ğ½Ğ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ³Ñ€ÑƒĞ¿Ğ¿Ñ‹(Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€:Ğ¤Ğ¸Ğ·Ğ¼Ğ°Ñ‚): ";
+			cin>>database[i].group;
 
-		cout << "Ââåäèòå îöåíêè ñòóäåíòà ÷åğåç ïğîáåëû: ";
-		input_assessment(size, i);
+		cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¾Ñ†ĞµĞ½ĞºĞ¸ ÑÑ‚ÑƒĞ´ĞµĞ½Ñ‚Ğ° Ñ‡ĞµÑ€ĞµĞ· Ğ¿Ñ€Ğ¾Ğ±ĞµĞ»Ñ‹: ";
+		input_assessment(size,i);
 		system("cls");
 	}
 
-	cout << "Êàê âû õîòèòå îòîáğàçèòü ñïèñîê ó÷åíèêîâ?\n"
-		<< "1.>75% îòëè÷íî\n"
-		<< "2.>50% 2 è 3\n"
-		<< "3.ïîëíûé ñïèñîê\n";
+	cout << "ĞšĞ°Ğº Ğ²Ñ‹ Ñ…Ğ¾Ñ‚Ğ¸Ñ‚Ğµ Ğ¾Ñ‚Ğ¾Ğ±Ñ€Ğ°Ğ·Ğ¸Ñ‚ÑŒ ÑĞ¿Ğ¸ÑĞ¾Ğº ÑƒÑ‡ĞµĞ½Ğ¸ĞºĞ¾Ğ²?\n"
+		<< "1.>75% Ğ¾Ñ‚Ğ»Ğ¸Ñ‡Ğ½Ğ¾\n"
+		<< "2.>50% 2 Ğ¸ 3\n"
+		<< "3.Ğ¿Ğ¾Ğ»Ğ½Ñ‹Ğ¹ ÑĞ¿Ğ¸ÑĞ¾Ğº\n";
 
 	while (exit == true) {
 		cin >> choose;
