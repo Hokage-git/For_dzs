@@ -105,11 +105,11 @@ int main()
     setlocale(LC_ALL, "rus");
     Box first{ 3,3,4,"Картон"};
     Box sec{ 23,12,42,"Картон"};
-    Box thierd;
+    Box third;
     cout << first;
     cout << sec;
-    thierd = first - sec;
-    cout << thierd;
-   //cin >> thierd;
-   //cout << thierd;
+    third = first - sec;
+    cout << third;
+   //cin >> third;
+   //cout << third;
 }
