@@ -62,24 +62,39 @@ public:
         return str[index];
     }
 
-    int operator()(char symbol) {
-        for (int i = 0; i < strlen(str); i++) {
-            if (str[i] == symbol) {
-                return i;
+    void operator()(char symbol) {
+        try {
+            int counter = 0;
+            for (int i = 0; i < strlen(str); i++) {
+                if (str[i] == symbol) {
+                    counter++;
+                }
+            }
+            if (counter == 0) {
+                throw "!!!ERR Symbol has not detected!!!";
             }
         }
-        return -1;
+        catch (char s) {
+            cout << "!!!ERR Symbol has not detected!!!";
+        }
+
+            for (int i = 0; i < strlen(str); i++) {
+                if (str[i] == symbol) {
+                    cout << i + 1 << " ";
+                }
+            }
+        
     }
 
     operator int() const {
         return strlen(str);
     }
 
-    int length() {
+    int length() const {
         return strlen(str);
     }
 
-    void Link(const MyString& arg) {
+    void Link(const MyString& arg) const {
         for (int i = 0; i < length(); i++) {
             if (!(str[i] != arg.str[i])) {
                 cout << str[i];
@@ -90,13 +105,13 @@ public:
 
 int main() {
     setlocale(LC_ALL, "rus");
-    MyString a1{ "ß ëşáëş åñòü" };
-    MyString a2{ "ß ëşáëş ñïàòü" };
+    MyString a1{ "Ğ¯ Ğ»ÑĞ±Ğ»Ñ ĞµÑÑ‚ÑŒ" };
+    MyString a2{ "Ğ¯ Ğ»ÑĞ±Ğ»Ñ ÑĞ¿Ğ°Ñ‚ÑŒ" };
     MyString a3;
 
-    cout<<a2 + a3;
+    //cout<<a2 + a3;
 
-    cout << a1('ë');
+    a1('g');
     cout << (int)a1;
     a2.Link(a1);
 }
