@@ -1,80 +1,103 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
 struct node {
-    int x;
-    node *prev, *next;
+	int x;
+	node* prev, * next;
 };
 
 class List {
 private:
-    node *Head, *Tail;
+	node* Head, * Tail;
+	int count;
 public:
-    List() :Head(NULL), Tail(NULL) {}
-    ~List() {
-        while (Head) {                   
-            Tail = Head->next;           
-            delete Head;                 
-            Head = Tail;                 
-        }
-    }
+	List(){
+		Head=nullptr;
+		Tail=nullptr;
+	}
+	~List() {
+		while (Head) {
+			Tail = Head->next;
+			delete Head;
+			Head = Tail;
+		}
+	}
 
-    void Add(int x) {
-        node* temp = new node;           
-        temp->next = NULL;               
-        temp->x = x;                     
+	void Add(int x) {
+		node* temp = new node;
+		temp->next = NULL;
+		temp->x = x;
+		temp->prev = Tail;
 
-        if (Head != NULL)                
-        {
-            temp->prev = Tail;           
-            Tail->next = temp;           
-            Tail = temp;                 
-        }
-        else                             
-        {
-            temp->prev = NULL;           
-            Head = Tail = temp;          
-        }
-    }
+		if (Tail != 0)
+			Tail->next = temp;
 
-    void Show()
-    {
-        node* temp;                     
-        temp = Head;
+		if (count == 0)
+			Head = Tail = temp;
+		else
+			Tail = temp;
 
-        while (temp != NULL)            
-        {
-            cout << temp->x << " ";     
-            temp = temp->next;          
-        }
+		count++;
+	}
 
-        cout << "\n";
-    }
+	void Show()
+	{
+		node* temp;
+		temp = Head;
 
-    void _delete(int x) {
-        node* temp;
-        temp = Head;
+		while (temp != NULL)
+		{
+			cout << temp->x << " ";
+			temp = temp->next;
+		}
 
-        while (temp->x != x) {
-            temp = temp->next;
-        }
+		cout << "\n";
+	}
 
-        temp->next = Tail;
-        
-    }
+	void _delete(int x) {
+		try {
+			if (x<1 || x>count) {
+				throw "ERR: Element not founded";
+			}
+
+			node* DEL = Head;
+
+			for (int i = 1; i < x; i++) {
+				DEL = DEL->next;
+			}
+
+			node* DEL_Next = DEL->next;
+			node* DEL_Prev = DEL->prev;
+
+			if (DEL_Prev != 0 && count != 1) {
+				DEL_Prev->next = DEL_Next;
+			}
+
+			if (DEL_Next != 0 && count != 1) {
+				DEL_Next->prev = DEL_Prev;
+			}
+
+			delete DEL;
+
+			count--;
+		}
+		catch (char** s) {
+			cerr << "ERR: Element not founded";
+		}
+	}
 };
 
 int main()
 {
-    List first;
-    first.Add(100);
-    first.Add(200);
-    first.Add(300);
-    first.Add(400);
-    first.Add(500);
+	List first;
+	first.Add(100);
+	first.Add(200);
+	first.Add(300);
+	first.Add(400);
+	first.Add(500);
 
-    first._delete(300);
+	first._delete(3);
 
-    first.Show();
+	first.Show();
 }
